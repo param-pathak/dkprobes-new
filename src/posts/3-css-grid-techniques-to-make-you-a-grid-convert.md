@@ -1,6 +1,6 @@
 ---
 title: "3 CSS Grid Techniques to Make You a Grid Convert"
-topics: Custom Properties,Grid,Layout,Responsive Design
+topics: Grid,Layout,Responsive Design
 episode: 15
 description: "Learn three powerful techniques for using grid that don't involve counting columns, including changing the default axis, centering, and responsive layout without media queries."
 templateEngineOverride: njk, md
