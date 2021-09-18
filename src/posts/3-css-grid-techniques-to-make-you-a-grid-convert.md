@@ -1,17 +1,17 @@
 ---
-title: "3 CSS Grid Techniques to Make You a Grid Convert"
-topics: Grid,Layout,Responsive Design
-episode: 15
+title: "5 things learnt starting my first job"
+topics: Experience,Software Engineering
+episode: 1
 description: "Learn three powerful techniques for using grid that don't involve counting columns, including changing the default axis, centering, and responsive layout without media queries."
 templateEngineOverride: njk, md
-date: 2020-06-27
+date: 2021-09-19
 ---
 
-CSS grid layout can feel daunting. In fact, I avoided it for several years and was a _diehard_ flexbox fan.
+Even though I'd interned at various organizations previously, this was something quite unexpected
 
-Then I found the following 3 powerful properties/techniques in grid that completely changed my tune.
+1. Ask extremely clear questions, that Google can't answer. Otherwise, you're just wasting your teammates' time.
 
-Spoiler, here's a tweet with all of them. Keep reading to learn a bit more!
+2. Learn a tech stack based on its relevance to your project. You'll never have time to learn a technology framework in its entirety.
 
 {% twitter "1276898582113681409" %}
 
