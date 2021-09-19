@@ -1,5 +1,3 @@
 module.exports = {
-  28: "CSS Functions",
-  29: "User Preferences",
-  30: "Architecting CSS",
+  1: "5 learnings in my first month as a Software Engineer"
 };

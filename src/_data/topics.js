@@ -1,3 +1,5 @@
 module.exports = [
-  "Typography",
+  "Software Engineering",
+  "Experience",
+  "Non Tech"
 ];
