@@ -1,122 +1,43 @@
 ---
-title: "5 things learnt starting my first job"
+title: "Asking questions for a software engineer"
 topics: Experience,Software Engineering
 episode: 1
-description: "Learn three powerful techniques for using grid that don't involve counting columns, including changing the default axis, centering, and responsive layout without media queries."
+description: ""
 templateEngineOverride: njk, md
 date: 2021-09-19
 ---
 
-Even though I'd interned at various organizations previously, this was something quite unexpected
+Asking questions at the right time, in the right way, to the right person
 
-1. Ask extremely clear questions, that Google can't answer. Otherwise, you're just wasting your teammates' time.
 
-2. Learn a tech stack based on its relevance to your project. You'll never have time to learn a technology framework in its entirety.
 
-{% twitter "1276898582113681409" %}
+Almost all freshers will agree that they've been encouraged by their teammates and managers to ask questions. However, this has a fine print : it actually goes, 'ask questions, if you can't find out the answer yourself'
 
-{% carbonAd %}
+And not because they don't wanna answer, but because
+<ul>
+  <li> If you keep asking questions you can find out with a few google searches, you're no good as a developer - you need to learn the art of googling.
+  <li> The managers/teammates usually have tasks of their own and are helping you on the side, which means that more often than not, they won't find enough time to answer your questions. 
+  <li> Answering questions is wayyyy tougher than asking them, especially if you're answering to a noob. Suppose you ask a question that you think is innocuous, and has a one line answer - "What does this imported package do". Now, your teammate's mind races back to what the package is, why it was brought in, why it's used, how it's used, and a few zillion other things, most of which would make no sense to you. So, she/he has to filter these out in a way so that you're able to grasp the essentials without feeling dumb or overwhelmed. That's tricky business.
+</ul>
 
-## 1: Switch the Grid Flow Axis
+So, what should you do? How should you 'ask questions'?
 
-I first desired this behavior when I wanted X-axis alignment of variable width items, and also desired to leverage `grid-gap`.
+First, the 'right way'
 
-### The Code
+<ol>
 
-```css
-grid-auto-flow: column;
-```
+<li> Any query you find, first google it. Right away, as it is. Maybe you find a blank google search result - very very rare. You'll find something that can complement your understanding in some way, even if it doesn't give you the complete answer. But you'll at least have some more idea and can ask the question to your teammate in a more refined way so that the tough choices your teammate would face, mentioned in point 3 above can be minimized.
 
-### What it does
+<li> Instead of asking a teammate to explain it all - tell her/him what you've understood and ask her/him to validate/correct you. If you've got it 70% right, the teammate only need explain 30%, saving both of your times. If you've got it entirely wrong, the teammate would know that there's something lacking in your fundamental understanding and correct that first. If you've got it entirely right, you're getting a promotion sooner.
 
-Default grid flow is oriented to "row" layout, which is complementary to block layout, where items flow down the page along the Y-axis.
+<li> Try asking the teammate for a resource where you can learn more about the question you're asking. That way, the teammate will not be under pressure to explain 'everything' to you, and instead, guide you to a resource, which can help you better.
 
-This switches that default behavior to "column" which means items default to flowing along the X-axis.
+<li> Make a habit of taking notes of what you ask and their answers. We often overestimate our memories and underestimate all the crap that's gonna take a chunk off our memories, so you best have it in written somewhere so that you can save yourself from your teammates' irritation by asking the same question 20 times. 
 
-### Things to note
+Next, the right time. If you're an overexcited sorta person, you wanna know the entire architecture and each and every package right on the first bloody day of the job, because you then wanna go and be Napoleon. Or if you're the shy sort, you keep stalling, waiting for the 'right time' until it's too late. Figuring out the right time to ask comes mainly with experience, but a thumb rule is that if it's something that's blocking your progress, ask it right away. If you think the teammate is going to come to this question, give her/him an opportunity to address it. If they skip, then ask. Finally, ensure that the teammate is in the right frame of mind when you ask a question, not when they're debugging a critical prod issue.
 
-- items will take as much room as needed to contain their content _up until_ the max width of the container, at which point text will break to new lines
-- there is a risk of overflow because of lack of "wrapping" behavior in grid, which means assigning this property will flow things along the X-axis into infinity
-  - this can be solved by only applying this behavior above a certain viewport width via a media query
+Finally, the right person. You could ask the same question to an immediate senior, your manager, and your team lead, and get different answers. You need to figure out which of these would work best in the context in which you're seeking an answer.
 
-> **Note**: once flexbox `gap` is fully supported, it will likely be the better method for this outcome due to also having wrapping behavior
+For instance, if you're struggling with a syntactical issue, you should most likely reach out to an immediate senior, someone who has the closest interface with the code, since they can give you the quickest answer. If you're looking at understanding a big picture of a project or a feature, someone who's been around longer can help better.
 
-### When to use
-
-For short content where variable widths are desirable, such as a navbar or list of icons, and when wrapping either isn't a concern or a media query can be used to flip this property.
-
-## 2. XY Center Anything
-
-Literally the thing everyone makes fun of when CSS comes up as a topic:
-
-> "How do you center a div?"
-
-Grid has the easiest answer!
-
-> Psst - interested in _lots_ of solutions to centering? Check out the "[The Complete Guide to Centering in CSS](https://moderncss.dev/complete-guide-to-centering-in-css/)"
-
-### The code
-
-```css
-place-content: center;
-```
-
-### What it does
-
-Centers any child content both vertically (Y) and horizontally (X) 🙌
-
-### Things to note
-
-- there are some [gotchas](https://moderncss.dev/complete-guide-to-centering-in-css/#xy-grid-solution) related to the behavior assigned to the children
-- the visual appearance may be only that it's centered horizontally if the container's height doesn't exceed the height of the children
-
-### When to use
-
-Anytime you want to center something vertically and horizontally.
-
-## 3. Intrinsically Responsive Grid Columns
-
-### The code
-
-```scss
-:root {
-  --grid-col-breakpoint: 15rem;
-}
-
-.grid-columns {
-  grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-breakpoint), 1fr));
-}
-```
-
-### What it does
-
-The unique-to-grid functions of `repeat()` and `minmax()` along with the `auto-fit` keyword work together to create an outcome where immediate children become equal-width, responsive columns.
-
-As the grid container resizes, upon hitting the supplied value for `--grid-col-breakpoint`, the columns begin to drop to a new virtual row.
-
-Use of the `--grid-col-breakpoint` CSS variables allows altering this "breakpoint" via inline style to accommodate various content within a layout or across components with only a single class.
-
-### Things to note
-
-- columns will always be equal width, growing and shrinking to remain equal as the container also flexes in size
-- it's possible for orphan columns to exist at certain container widths
-
-> Check out a more comprehensive explanation of what's happening in "[Solutions to Replace the 12-Column Grid](https://moderncss.dev/solutions-to-replace-the-12-column-grid/#grid)"
-
-### When to use
-
-If you're in need of an intrinsically responsive grid with equal-width columns.
-
-This behavior is also one of two viable "container query" methods that we currently have available since it responds to container width instead of being controlled by media queries.
-
-> Learn more about the idea of using [grid for container queries](https://moderncss.dev/container-query-solutions-with-css-grid-and-flexbox/#grid-solution) >
-
-{% newsletterPromo %}
-
-## Demo
-
-This CodePen demonstrates all 3 techniques:
-
-{% codepen "gOPxxNO" %}
-
-> Check out my [egghead lessons](https://5t3ph.dev/egghead) which further explore these grid techniques
+</ol>
