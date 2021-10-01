@@ -132,7 +132,7 @@ ${htmlCode}
   });
 
   eleventyConfig.addShortcode("twitter", (tweetID) => {
-    return `<a href="https://twitter.com/5t3ph/status/${tweetID}" class="tdbc-button tdbc-button--small">View tweet</a>`;
+    return `<a href="https://twitter.com/dkp1903status/${tweetID}" class="tdbc-button tdbc-button--small">View tweet</a>`;
   });
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
